@@ -37,7 +37,7 @@ Example 3:
 >>> 
 ```
 
-`Warning:`
+## `Warning:`
 
 Measurements are stored internally by converting them to a floating-point number. 
 Given that floating-point numbers are very slightly lossy, you should be aware of any inaccuracies that this might cause.
