@@ -1,11 +1,14 @@
-from base import LengthBase
+from lengths.base import LengthBase
 
 
+__all__ = ['Inch']
+
+"""Inch objects to allow for conversion.
+
+"""
 class Inch(LengthBase):
     """Class representing Length in Inch.
 
-    :param LengthBase: [description]
-    :type LengthBase: [type]
     """
     DEFAULT_UNIT = 'in'
     UNITS = {
@@ -14,3 +17,4 @@ class Inch(LengthBase):
         'yd': 0.02778
     }
     ALIAS = ['in', 'inch', 'inches']
+

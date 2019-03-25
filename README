@@ -1,0 +1,43 @@
+# Length Converter - Basic
+
+A library to convert length from one unit to another.
+
+In this branch, it assumes only following three length units:
+
+1. Meter (m)
+2. Inches (in)
+3. Yard (yd)
+
+`NOTE:` This branch does not consider extending the functionality for other length units. The initial purpose is to implement functionality only for converting between above 3 units.
+
+Example 1:
+```python
+>>> from lengths.converter import Converter
+>>> converter = Converter.convert_to_length(3.6, "yard", "inches")
+>>> converter
+'129.6 inches'
+>>> 
+```
+
+Example 2:
+```python
+>>> from lengths.converter import Converter
+>>> converter = Converter.convert_to_all(3.6, "yard")
+>>> converter
+['0.100008 in', '3.29184 m', '3.6 yd']
+>>> 
+```
+
+Example 3:
+```python
+>>> from lengths.converter import Converter
+>>> converter = Converter.convert(3.6, "yard", "metres")
+>>> converter
+{'source_value': 3.6, 'source_unit': 'yard', 'target_value': 3.29184, 'target_unit': 'metres'}
+>>> 
+```
+
+`Warning:`
+
+Measurements are stored internally by converting them to a floating-point number. 
+Given that floating-point numbers are very slightly lossy, you should be aware of any inaccuracies that this might cause.

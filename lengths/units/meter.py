@@ -1,11 +1,14 @@
-from base import LengthBase
+from lengths.base import LengthBase
 
 
+__all__ = ['Meter']
+
+"""Meter objects to allow for conversion.
+
+"""
 class Meter(LengthBase):
     """class representing Length in Meter
 
-    :param LengthBase: [description]
-    :type LengthBase: [type]
     """
     DEFAULT_UNIT = 'm'
     UNITS = {
@@ -14,3 +17,4 @@ class Meter(LengthBase):
         'yd': 0.9144
     }
     ALIAS = ['m', 'metre', 'metres', 'meter', 'meters']
+

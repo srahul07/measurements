@@ -1,3 +1,8 @@
 *.pyc
 
+.eggs
+
 venv
+dist
+.vscode
+.pytest_cache
