@@ -1,12 +1,12 @@
-import sys
 import inspect
+from lengths.base import LengthBase
 
 
 def get_all_lengths():
     from lengths import units
     length_list = []
     for name, obj in inspect.getmembers(units):
-        if inspect.isclass(obj):
+        if inspect.isclass(obj) and issubclass(obj, LengthBase):
             length_list.append(obj)
     return length_list
 
