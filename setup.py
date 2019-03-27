@@ -4,7 +4,7 @@ from distutils.core import setup
 
 setup(
     name="lengths_converter",
-    version=0.1,
+    version=0.2,
     author="Rahul Shelke",
     author_email="srahul07@gmail.com",
     url="https://bitbucket.org/srahul07/length_converter/src/basic/",
