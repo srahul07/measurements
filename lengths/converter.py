@@ -4,7 +4,7 @@ class Converter(object):
     """class to represent converter that will be used to convert units
     
     """
-    def __length_converter(self, value, from_unit, to_unit):
+    def _length_converter(self, value, from_unit, to_unit):
         from_length = get_unit_class(from_unit)
         if not from_length:
             raise AttributeError("Invalid {from_unit} is supplied.".format(from_unit=from_unit))
@@ -30,7 +30,7 @@ class Converter(object):
         :return: key value pairs of value and unit
         :rtype: dict
         """
-        result = cls().__length_converter(value, from_unit, to_unit)
+        result = cls()._length_converter(value, from_unit, to_unit)
 
         return {
             "source_value": value,
@@ -53,7 +53,7 @@ class Converter(object):
         :return: converted length in new unit
         :rtype: str
         """
-        result = cls().__length_converter(value, from_unit, to_unit)
+        result = cls()._length_converter(value, from_unit, to_unit)
         return "{0} {1}".format(result, to_unit)
     
     @classmethod
