@@ -7,7 +7,7 @@ Master branch contains initial code and not a working one.
 The working code is present in two branches:
 
 1. [Basic](https://bitbucket.org/srahul07/length_converter/src/basic/?target="_blank")
-2. [Expandable](https://bitbucket.org/srahul07/length_converter/src/expandable/){:target="_blank"}
+2. [Expandable](https://bitbucket.org/srahul07/length_converter/src/expandable/?target="_blank")
 
 ## Basic
 
