@@ -1,8 +1,10 @@
 *.pyc
 
 .eggs
+.cache
+.sonarlint
+.vscode
+.pytest_cache
 
 venv
 dist
-.vscode
-.pytest_cache

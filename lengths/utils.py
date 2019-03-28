@@ -1,4 +1,8 @@
+import sys
 import inspect
+
+
+sys_version = sys.version_info[0]
 
 
 def get_child_members_list(members, parent_class):

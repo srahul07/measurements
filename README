@@ -49,12 +49,27 @@ class Foot(LengthBase):
 ```python
 >>> from lengths.converter import Converter
 >>> converter = Converter()
->>> converter.convert(3.6, "yard", "metres")
+>>> converter.convert_items(3.6, "yard", "metres")
 {'source_value': 3.6, 'source_unit': 'yard', 'target_value': 3.29184, 'target_unit': 'metres'}
 >>>
 ```
 
-#### Example 5: Single Custom Class
+#### Example 5:
+```python
+>>> from lengths.converter import Converter
+>>> converter = Converter()
+>>> converter.convert("6 m to yd")
+'6.5617 yd'
+>>> converter.convert("6 m to yd", dict)
+{'source_value': 6.0, 'source_unit': 'm', 'target_value': 6.5617, 'target_unit': 'yd'}
+>>> converter.convert("6 m to yd", list)
+['236.22 inch', '6 meter', '6.5617 yard']
+>>> converter.convert("6 m to all", list)
+['236.22 inch', '6 meter', '6.5617 yard']
+>>>
+```
+
+#### Example 6: Single Custom Class
 ```python
 >>> from lengths.converter import Converter
 >>> from lengths.base import LengthBase
@@ -76,7 +91,7 @@ class Foot(LengthBase):
 ['43.2000 inch', '1.0973 meter', '1.1999 yard', '3.6000 foot']
 ```
 
-#### Example 6: Multiple Custom Classes
+#### Example 7: Multiple Custom Classes
 ```python
 >>> from lengths.converter import Converter
 >>> from lengths.base import LengthBase
@@ -111,5 +126,5 @@ class Foot(LengthBase):
 
 ## Warning:
 
-Measurements are stored internally by converting them to a floating-point number. 
-Given that floating-point numbers are very slightly lossy, you should be aware of any inaccuracies that this might cause.
+> Measurements are stored internally by converting them to a floating-point number. 
+> Given that floating-point numbers are very slightly lossy, you should be aware of any inaccuracies that this might cause.

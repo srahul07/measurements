@@ -11,5 +11,12 @@ setup(
     description="Easily convert lengths in Python",
     packages=["lengths"],
     keywords = "lengths",
-    long_description=open("README").read()
+    long_description=open("README").read(),
+    classifiers=[
+        'Development Status :: 1 - Alpha',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 2.7',
+        'Topic :: Software Development :: Libraries :: Python Modules'
+    ]
 )

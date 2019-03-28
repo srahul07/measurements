@@ -45,18 +45,18 @@ class TestConverter(object):
         length = converter.get_unit_class('m')
         assert length != Yard
 
-    def test_convert_check_return_type(self):
+    def test_convert_items_check_return_type(self):
         converter = Converter()
-        convert = converter.convert(2, "yd", "inches")
+        convert = converter.convert_items(2, "yd", "inches")
         assert type(convert) == dict
 
-    def test_convert(self):
+    def test_convert_items(self):
         converter = Converter()
-        convert = converter.convert(3, 'in', 'metres')
+        convert = converter.convert_items(3, 'in', 'metres')
         assert convert == {'source_unit': 'in',
                            'source_value': 3,
                            'target_unit': 'metres',
-                           'target_value': 0.07619999999999999}
+                           'target_value': 0.0762}
 
     def test_convert_to_all(self):
         converter = Converter()
@@ -72,10 +72,27 @@ class TestConverter(object):
     def test_convert_to_length(self):
         converter = Converter()
         convert = converter.convert_to_length(2, "yard", 'in')
-        assert convert == "72.0000 in"
+        assert convert == "72 in"
 
     def test_convert_to_length_feet(self):
         converter = Converter()
         converter.add_length_list([Foot, Kilometer])
         convert = converter.convert_to_length(2, "yard", 'feet')
         assert convert == "6.0006 feet"
+
+    def test_convert_to_str(self):
+        converter = Converter()
+        convert = converter.convert("6 m to yard")
+        assert convert == "6.5617 yard"
+
+    def test_convert_to_dict(self):
+        converter = Converter()
+        convert = converter.convert("6 m to yard", dict)
+        assert convert == {'source_value': 6.0, 'source_unit': 'm',
+                           'target_value': 6.5617, 'target_unit': 'yard'}
+
+    def test_convert_to_list(self):
+        converter = Converter()
+        convert = converter.convert("6 m to all")
+        assert convert == ['236.22 inch',
+                           '6 meter', '6.5617 yard']
