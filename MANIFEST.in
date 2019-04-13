@@ -1,0 +1,10 @@
+include *.py
+include *.txt
+
+include tests/*
+include lengths/*
+include lengths/units/*
+include docs/*
+
+include README
+include MANIFEST.in

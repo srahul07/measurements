@@ -1,11 +1,14 @@
-from base import LengthBase
+from lengths.base import LengthBase
 
 
+__all__ = ['Yard']
+
+"""Yard objects to allow for conversions
+
+"""
 class Yard(LengthBase):
     """class representing Length in Yard
 
-    :param LengthBase: [description]
-    :type LengthBase: [type]
     """
     DEFAULT_UNIT = 'yd'
     UNITS = {
@@ -14,3 +17,4 @@ class Yard(LengthBase):
         'yd': 1.0
     }
     ALIAS = ['yd', 'yard', 'yards']
+    

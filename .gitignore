@@ -1,9 +1,11 @@
 *.pyc
 
-.cache
 .eggs
-.pytest_cache
+.cache
+.sonarlint
 .vscode
+.pytest_cache
 
-dist
 venv
+dist
+.scannerwork

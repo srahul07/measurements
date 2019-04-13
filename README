@@ -1,0 +1,130 @@
+# Length Converter - Basic
+
+A library to convert length from one unit to another.
+
+`NOTE:` This branch focuses on extending the functionality to create new length units.
+
+#### Example 1: Create a new Length Class
+```python
+from lengths.base import LengthBase
+
+class Foot(LengthBase):
+    DEFAULT_UNIT = 'ft'
+    UNITS = {
+        'in': 12.0,
+        'm': 0.3048,
+        'yd': 0.3333,
+        'ft': 1.0
+    }
+    ALIAS = ['ft', 'foot', 'feet']
+```
+
+`NOTE:` While creating a new lengths class follwoing attributes are required to be defined:
+*DEFAULT_UNIT:* It's default string used to represent default unit of the Length, could be SI-UNIT.
+*UNITS:* It's a dictionary containing key-value pairs of units and their repsective amount requried to calculate 1 unit of respective key compared to this length.
+*ALIAS:* List of aliases used to represent this length
+
+> It's a responsibility of the implemented class to define UNITS of all the unit types including default provided in library. 
+> Default Units in Library: Inch, Meter, Yard.
+
+#### Example 2:
+```python
+>>> from lengths.converter import Converter
+>>> converter = Converter()
+>>> converter.convert_to_length(3.6, "yard", "inches")
+'129.6000 inches'
+>>> 
+```
+
+#### Example 3:
+```python
+>>> from lengths.converter import Converter
+>>> converter = Converter()
+>>> converter.convert_to_all(3.6, "yard")
+['129.6000 inch', '3.2918 meter', '3.6000 yard']
+>>> 
+```
+
+#### Example 4:
+```python
+>>> from lengths.converter import Converter
+>>> converter = Converter()
+>>> converter.convert_items(3.6, "yard", "metres")
+{'source_value': 3.6, 'source_unit': 'yard', 'target_value': 3.29184, 'target_unit': 'metres'}
+>>>
+```
+
+#### Example 5:
+```python
+>>> from lengths.converter import Converter
+>>> converter = Converter()
+>>> converter.convert("6 m to yd")
+'6.5617 yd'
+>>> converter.convert("6 m to yd", dict)
+{'source_value': 6.0, 'source_unit': 'm', 'target_value': 6.5617, 'target_unit': 'yd'}
+>>> converter.convert("6 m to yd", list)
+['236.22 inch', '6 meter', '6.5617 yard']
+>>> converter.convert("6 m to all", list)
+['236.22 inch', '6 meter', '6.5617 yard']
+>>>
+```
+
+#### Example 6: Single Custom Class
+```python
+>>> from lengths.converter import Converter
+>>> from lengths.base import LengthBase
+>>> class Foot(LengthBase):
+...     DEFAULT_UNIT = 'ft'
+...     UNITS = {
+...         'in': 12.0,
+...         'm': 0.3048,
+...         'yd': 0.3333,
+...         'ft': 1.0
+...     }
+...     ALIAS = ['ft', 'foot', 'feet']
+... 
+>>> converter = Converter()
+>>> converter.add_length_list(Foot)
+>>> converter.convert_to_length(3.6, "ft", "metres")
+'1.0973 metres'
+>>> converter.convert_to_all(3.6, "ft")
+['43.2000 inch', '1.0973 meter', '1.1999 yard', '3.6000 foot']
+```
+
+#### Example 7: Multiple Custom Classes
+```python
+>>> from lengths.converter import Converter
+>>> from lengths.base import LengthBase
+>>> class Foot(LengthBase):
+...     DEFAULT_UNIT = 'ft'
+...     UNITS = {
+...         'in': 12.0,
+...         'm': 0.3048,
+...         'yd': 0.3333,
+...         'ft': 1.0
+...     }
+...     ALIAS = ['ft', 'foot', 'feet']
+... 
+>>> class Kilometer(LengthBase):
+...     DEFAULT_UNIT = 'km'
+...     UNITS = {
+...         'in': 39370.1,
+...         'm': 1000,
+...         'yd': 1093.61,
+...         'ft': 3280.84,
+...         'km': 1.0,
+...     }
+...     ALIAS = ['km', 'kilometer', 'kilometers', 'kilometre', 'kilometres']
+... 
+>>> converter = Converter()
+>>> converter.add_length_list([Foot, Kilometer])
+>>> converter.convert_to_length(3.6, "km", "feet")
+'11811.0240 feet'
+>>> converter.convert_to_all(3.6, "km")
+['141732.3600 inch', '3600.0000 meter', '3936.9960 yard', '11811.0240 foot', '3.6000 kilometer']
+```
+
+## Warning:
+
+> Measurements are stored internally by converting them to a floating-point number. 
+> Given that floating-point numbers are very slightly lossy, you should be aware of any inaccuracies that this might cause.
